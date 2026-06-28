@@ -1,4 +1,0 @@
-interface:
-  display_name: "Identify Tech Debt"
-  short_description: "Find hidden technical debt in projects"
-  default_prompt: "Use $identify-tech-debt to audit this project for hidden technical debt."

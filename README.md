@@ -71,13 +71,13 @@ Use $identify-tech-debt to inspect the backend service layer for duplicated busi
 The skill includes a heuristic scanner for cheap leads:
 
 ```bash
-python3 skills/identify-tech-debt/scripts/scan_debt_signals.py /path/to/project
+python3 plugins/identify-tech-debt/skills/identify-tech-debt/scripts/scan_debt_signals.py /path/to/project
 ```
 
 For JSON output:
 
 ```bash
-python3 skills/identify-tech-debt/scripts/scan_debt_signals.py /path/to/project \
+python3 plugins/identify-tech-debt/skills/identify-tech-debt/scripts/scan_debt_signals.py /path/to/project \
   --format json \
   --output debt-signals.json
 ```
@@ -89,10 +89,8 @@ Scanner output is only a lead list. Verify source context before treating any si
 ```text
 .agents/plugins/marketplace.json                         # Local Codex marketplace
 plugins/identify-tech-debt/                              # Marketplace plugin package
-.codex-plugin/plugin.json                                # Direct plugin manifest
-skills/identify-tech-debt/SKILL.md                       # Direct skill source
-skills/identify-tech-debt/references/debt-taxonomy.md    # Debt categories and evidence standard
-skills/identify-tech-debt/scripts/scan_debt_signals.py   # Optional heuristic scanner
+plugins/identify-tech-debt/.codex-plugin/plugin.json     # Plugin manifest
+plugins/identify-tech-debt/skills/identify-tech-debt/     # Bundled skill source
 ```
 
 ## License
