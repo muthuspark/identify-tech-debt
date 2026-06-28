@@ -1,31 +1,33 @@
-# identify-tech-debt
+# Identify Tech Debt
 
-A Codex skill for auditing software projects for hidden technical debt: architecture drift, duplicated business rules, ignored abstractions, stale configuration, weak tests, operational gaps, security shortcuts, and other long-term maintainability risks.
+A Codex skill that audits software projects for hidden technical debt while separating confirmed findings from investigation leads.
 
-## Install
+It targets architecture drift, duplicated business rules, ignored abstractions, stale configuration, weak tests, operational gaps, security shortcuts, performance risks, and other long-term maintainability issues that normal linters and tests often miss.
 
-Clone this repository into your Codex skills directory:
+## Install in Codex
+
+Clone this skill into your Codex skills directory:
 
 ```bash
 mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
-git clone git@github.com:muthuspark/identify-tech-debt.git "${CODEX_HOME:-$HOME/.codex}/skills/identify-tech-debt"
+git clone https://github.com/muthuspark/identify-tech-debt.git \
+  "${CODEX_HOME:-$HOME/.codex}/skills/identify-tech-debt"
 ```
 
-Restart Codex so it can discover the new skill.
+Start a new Codex thread after installing so Codex picks up the new skill.
 
-## Use
+## Local development install
 
-Invoke the skill by name:
+Use this path only if you want to edit the skill locally.
 
-```text
-Use $identify-tech-debt to audit this project for hidden technical debt.
+```bash
+git clone https://github.com/muthuspark/identify-tech-debt.git
+cd identify-tech-debt
+mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills"
+ln -s "$(pwd)" "${CODEX_HOME:-$HOME/.codex}/skills/identify-tech-debt"
 ```
 
-For a narrower review:
-
-```text
-Use $identify-tech-debt to inspect the backend service layer for duplicated business rules and architecture drift.
-```
+After changing the skill, start a new Codex thread before testing.
 
 ## Update
 
@@ -34,11 +36,33 @@ cd "${CODEX_HOME:-$HOME/.codex}/skills/identify-tech-debt"
 git pull
 ```
 
-Restart Codex after updating.
+Start a new Codex thread after updating.
 
-## Optional Scanner
+## Use
 
-The skill includes a heuristic scanner for cheap leads. Run it from any checkout:
+In Codex CLI, mention the skill with `$identify-tech-debt`:
+
+```text
+$identify-tech-debt Audit this project for hidden technical debt.
+```
+
+You can also browse/select it with `/skills`, or let Codex invoke it implicitly when your request matches the skill description.
+
+Ask Codex naturally:
+
+```text
+Audit this project for architecture drift, duplicated business rules, and operational debt.
+```
+
+For a narrower review:
+
+```text
+Use $identify-tech-debt to inspect the backend service layer for duplicated business rules and architecture drift.
+```
+
+## Optional scanner
+
+The skill includes a heuristic scanner for cheap leads:
 
 ```bash
 python3 scripts/scan_debt_signals.py /path/to/project
@@ -47,7 +71,22 @@ python3 scripts/scan_debt_signals.py /path/to/project
 For JSON output:
 
 ```bash
-python3 scripts/scan_debt_signals.py /path/to/project --format json --output debt-signals.json
+python3 scripts/scan_debt_signals.py /path/to/project \
+  --format json \
+  --output debt-signals.json
 ```
 
 Scanner output is only a lead list. Verify source context before treating any signal as confirmed technical debt.
+
+## Layout
+
+```text
+SKILL.md                         # Skill instructions and audit workflow
+agents/openai.yaml               # Codex skill UI metadata
+references/debt-taxonomy.md      # Debt categories, signals, and evidence standard
+scripts/scan_debt_signals.py     # Optional heuristic scanner
+```
+
+## License
+
+Add a license file before distributing this skill broadly.
