@@ -1,0 +1,20 @@
+{
+  "name": "identify-tech-debt",
+  "interface": {
+    "displayName": "Identify Tech Debt"
+  },
+  "plugins": [
+    {
+      "name": "identify-tech-debt",
+      "source": {
+        "source": "local",
+        "path": "./plugins/identify-tech-debt"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
