@@ -1,0 +1,8 @@
+{
+  "name": "identify-tech-debt",
+  "version": "0.1.0",
+  "description": "Audit software projects for hidden technical debt with evidence-backed findings and investigation leads.",
+  "author": {
+    "name": "muthuspark"
+  }
+}

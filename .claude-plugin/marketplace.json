@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "identify-tech-debt",
+  "description": "Claude Code plugin marketplace for technical debt auditing workflows.",
+  "owner": {
+    "name": "muthuspark"
+  },
+  "plugins": [
+    {
+      "name": "identify-tech-debt",
+      "description": "Audit software projects for hidden technical debt with evidence-backed findings and investigation leads.",
+      "author": {
+        "name": "muthuspark"
+      },
+      "category": "development",
+      "source": "./plugins/identify-tech-debt",
+      "homepage": "https://github.com/muthuspark/identify-tech-debt"
+    }
+  ]
+}
